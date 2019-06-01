@@ -392,7 +392,7 @@ impl Connection {
 					if let Some(channel) = &options.channel {
 						args.push(("client_default_channel", channel));
 					}
-					if let Some(channel_pass) = &options.channel_pass {
+					if let Some(channel_pass) = &options.channel_pass.to_string() {
 						args.push(("client_default_channel_password", channel_pass));
 					}
 
