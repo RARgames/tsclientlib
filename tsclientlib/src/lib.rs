@@ -823,7 +823,7 @@ impl ConnectOptions {
 			name: String::from("TeamSpeakUser"),
 			version: Version::Linux_3_3_0__3,
 			channel: None,
-			channel_pas: String::from(""),
+			channel_pass: String::from(" "),
 			logger: None,
 			log_commands: false,
 			log_packets: false,
