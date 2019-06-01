@@ -380,7 +380,6 @@ impl Connection {
 						("client_platform", &version_platform),
 						("client_input_hardware", "1"),
 						("client_output_hardware", "1"),
-						("client_default_channel_password", ""),
 						("client_server_password", ""),
 						("client_meta_data", ""),
 						("client_version_sign", &version_sign),
@@ -392,6 +391,9 @@ impl Connection {
 
 					if let Some(channel) = &options.channel {
 						args.push(("client_default_channel", channel));
+					}
+					if let Some(channel_pass) = &options.channel_pass {
+						args.push(("client_default_channel_password", channel_pass));
 					}
 
 					let packet = OutCommand::new::<_, _, String, String, _, _, std::iter::Empty<_>>(
@@ -787,6 +789,7 @@ pub struct ConnectOptions {
 	name: String,
 	version: Version,
 	channel: Option<String>,
+	channel_pass: String,
 	logger: Option<Logger>,
 	log_commands: bool,
 	log_packets: bool,
@@ -820,6 +823,7 @@ impl ConnectOptions {
 			name: String::from("TeamSpeakUser"),
 			version: Version::Linux_3_3_0__3,
 			channel: None,
+			channel_pas: String::from(""),
 			logger: None,
 			log_commands: false,
 			log_packets: false,
@@ -932,6 +936,12 @@ impl ConnectOptions {
 		self.channel = Some(format!("/{}", channel.0));
 		self
 	}
+	
+	#[inline]
+	pub fn channel_pass(mut self, channel_pass: String) -> Self {
+		self.channel_pass = channel_pass;
+		self
+	}
 
 	/// If the content of all commands should be written to the logger.
 	///
@@ -1041,6 +1051,7 @@ impl fmt::Debug for ConnectOptions {
 			name,
 			version,
 			channel,
+			channel_pass,
 			logger,
 			log_commands,
 			log_packets,
@@ -1063,6 +1074,7 @@ impl fmt::Debug for ConnectOptions {
 			name,
 			version,
 			channel,
+			channel_pass,
 			logger,
 			log_commands,
 			log_packets,
