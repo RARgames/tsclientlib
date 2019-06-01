@@ -1063,7 +1063,7 @@ impl fmt::Debug for ConnectOptions {
 		write!(
 			f,
 			"ConnectOptions {{ address: {:?}, local_address: {:?}, \
-			 private_key: {:?}, name: {}, version: {}, channel: {:?}, \
+			 private_key: {:?}, name: {}, version: {}, channel: {:?}, channel_pass: {:?}, \
 			 logger: {:?}, log_commands: {}, log_packets: {}, \
 			 log_udp_packets: {},",
 			address,
