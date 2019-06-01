@@ -383,7 +383,7 @@ impl Connection {
 						("client_server_password", ""),
 						("client_meta_data", ""),
 						("client_version_sign", &version_sign),
-						("client_default_channel_password", options.channel_pass.as_str()),
+						("client_default_channel_password", "xxxxxxx"),//options.channel_pass.as_str()),
 						("client_nickname_phonetic", ""),
 						("client_key_offset", &offset),
 						("client_default_token", ""),
